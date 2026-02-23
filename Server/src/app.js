@@ -1,12 +1,7 @@
-const express = require("express");
-const cookieparser = require('cookie-parser');
+const express = require('express');
 require('dotenv').config();
 
-
 const app = express();
-
-app.use(cookieparser());
-
 
 
 module.exports = app;

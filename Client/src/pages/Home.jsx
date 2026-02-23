@@ -49,10 +49,10 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-gray-300 text-lg">
-            Smart Life OS is your all-in-one life management platform. Track
-            daily expenses, monitor habits and streaks, and analyze your
-            performance all from a clean, intuitive dashboard designed to keep
-            you in control.
+            Sync Life is your all-in-one life management platform. Track daily
+            expenses, monitor habits and streaks, and analyze your performance
+            all from a clean, intuitive dashboard designed to keep you in
+            control.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
