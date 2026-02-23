@@ -1,17 +1,19 @@
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/synclife-logo.png";
+import Lottie from "lottie-react";
+import Assistant from "../assets/Assistant-Bot.json";
+import logo from "../assets/synclife.png";
 
 export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-screen bg-slate-50 text-gray-800 overflow-hidden">
+    <div className="relative min-h-screen bg-gray-900 text-white overflow-hidden">
       {/* Background Blobs */}
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-400 opacity-20 blur-3xl rounded-full"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 opacity-20 blur-3xl rounded-full"></div>
 
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-6 md:px-16 py-4 bg-white/70 backdrop-blur-xl shadow-sm sticky top-0 z-50">
+      <nav className="flex justify-between items-center px-6 md:px-16 py-4 bg-gray-900 backdrop-blur-xl shadow-sm sticky top-0 z-50">
         <img
           src={logo}
           alt="SyncLife Logo"
@@ -21,7 +23,7 @@ export default function Home() {
         <div className="flex gap-4 items-center">
           <button
             onClick={() => navigate("/login")}
-            className="text-gray-700 hover:text-indigo-600 transition hidden sm:block"
+            className="text-white/80 hover:text-indigo-400 transition hidden sm:block"
           >
             Login
           </button>
@@ -36,19 +38,21 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-24 gap-12">
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-20 gap-8">
         {/* Left Content */}
         <div className="max-w-xl text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+          <h1 className="text-2xl md:text-4xl font-bold leading-tight">
             Organize Your Life.
             <span className="block bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               Sync Everything.
             </span>
           </h1>
 
-          <p className="mt-6 text-gray-600 text-lg">
-            Sync Life is your all-in-one productivity hub. Manage tasks, goals,
-            and notes in a beautifully simple dashboard designed for focus.
+          <p className="mt-6 text-gray-300 text-lg">
+            Smart Life OS is your all-in-one life management platform. Track
+            daily expenses, monitor habits and streaks, and analyze your
+            performance all from a clean, intuitive dashboard designed to keep
+            you in control.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -69,45 +73,12 @@ export default function Home() {
         </div>
 
         {/* Glass Illustration Card */}
-        <div className="w-full md:w-1/2 flex justify-center hidden sm:block">
-          <div className="bg-white/60 backdrop-blur-xl p-8 rounded-3xl shadow-2xl hover:scale-105 transition duration-500">
-            <svg viewBox="0 0 500 400" className="w-80 md:w-96">
-              <circle cx="250" cy="200" r="150" fill="#6366f1" opacity="0.08" />
-              <rect
-                x="150"
-                y="120"
-                width="200"
-                height="160"
-                rx="20"
-                fill="#6366f1"
-                opacity="0.2"
-              />
-              <rect
-                x="170"
-                y="150"
-                width="160"
-                height="20"
-                rx="5"
-                fill="#6366f1"
-              />
-              <rect
-                x="170"
-                y="190"
-                width="120"
-                height="15"
-                rx="5"
-                fill="#818cf8"
-              />
-              <rect
-                x="170"
-                y="220"
-                width="100"
-                height="15"
-                rx="5"
-                fill="#a5b4fc"
-              />
-            </svg>
-          </div>
+        <div className="w-full md:w-5/6 justify-center sm:flex ">
+          <Lottie
+            animationData={Assistant}
+            loop={true}
+            style={{ width: "100%", height: "100%" }}
+          />
         </div>
       </section>
 
@@ -121,27 +92,27 @@ export default function Home() {
           {[
             {
               title: "Smart Notes",
-              desc: "Capture ideas instantly and organize them effortlessly.",
+              desc: "Capture expenses, habits, and performance insights instantly, all organized in one place.",
               icon: "📝",
             },
             {
-              title: "Task Tracking",
-              desc: "Set goals, track deadlines and stay on top of work.",
+              title: "Expense & Task Tracking",
+              desc: "Track daily expenses, set goals, and manage tasks seamlessly.",
               icon: "📅",
             },
             {
               title: "Secure Access",
-              desc: "Your data stays protected with secure authentication.",
+              desc: "All your financial and productivity data is protected with top-notch security.",
               icon: "🔐",
             },
           ].map((feature, i) => (
             <div
               key={i}
-              className="bg-white p-8 rounded-3xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-500"
+              className="bg-gray-600 p-8 rounded-3xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition duration-500"
             >
               <div className="text-3xl mb-4">{feature.icon}</div>
               <h4 className="text-xl font-semibold mb-3">{feature.title}</h4>
-              <p className="text-gray-600">{feature.desc}</p>
+              <p className="text-white">{feature.desc}</p>
             </div>
           ))}
         </div>
@@ -162,7 +133,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="text-center py-6 text-gray-500 text-sm bg-white">
+      <footer className="text-center py-6 text-white text-sm bg-gray-800">
         © 2026 Sync Life. Designed for clarity & focus.
       </footer>
     </div>

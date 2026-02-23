@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import sign from "../assets/Sign.svg";
+import Lottie from "lottie-react";
+import sign from "../assets/sign.json";
 
 export default function Register() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-slate-50 overflow-hidden px-4">
+    <div className="relative min-h-screen flex items-center justify-center bg-gray-800 overflow-hidden px-4">
       {/* Background Blobs */}
       <div className="absolute -top-32 -left-32 w-72 h-72 bg-indigo-400 opacity-20 blur-3xl rounded-full"></div>
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-purple-400 opacity-20 blur-3xl rounded-full"></div>
@@ -13,10 +14,10 @@ export default function Register() {
       <div className="relative flex flex-col md:flex-row items-center bg-white/70 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden max-w-4xl w-full">
         {/* Illustration Section */}
         <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-10">
-          <img
-            src={sign}
-            alt="Sign Up Illustration"
-            className="w-48 sm:w-72 md:w-full max-w-xs md:max-w-md animate-[float_5s_ease-in-out_infinite]"
+          <Lottie
+            animationData={sign}
+            loop={true}
+            style={{ width: "100%", height: "100%" }}
           />
         </div>
 
