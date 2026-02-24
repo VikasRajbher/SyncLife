@@ -7,8 +7,10 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: [
+    "http://localhost:5173",
+    "https://synclife-1.onrender.com"
+  ],
   credentials: true
 }));
 
