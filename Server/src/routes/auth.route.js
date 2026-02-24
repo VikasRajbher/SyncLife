@@ -1,13 +1,13 @@
 const express = require('express');
-import authController from '../controllers/auth.control';
-import {protect} from '../middlewares/auth.middleware';
+const authController = require('../controllers/auth.controller')
 
 const router = express.Router();
 
 
-router.post('/register', authController.register);
+router.post('/register', authController.Register);
 
-router.post('/login', authController);
+
+router.post('/login', authController.Login)
 
 
 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const{ validateEmail, validatePassword, validateName, validateAllowedDomain } = require('../validators/auth.validator')
 
 
 const userSchema = mongoose.Schema({
@@ -7,30 +7,31 @@ const userSchema = mongoose.Schema({
         type:String,
         required:true,
         trim:true,
+        validate:{
+            validator:validateName,
+            message: props => `${props.value} is not a valid name! Only letters and spaces allowed (3-20 chars)`
+        }   
     },
-    email:{
-        type:String,
-        required:true,
-        unique:true,
-        trim:true,
-    },
+    email: {
+    type: String,
+    required: [true, "Email is required"],
+    unique: true,
+    validate: [
+      { validator: validateEmail, message: "Invalid email format" },
+      { validator: validateAllowedDomain, message: "Email domain not allowed" },
+    ],
+  },
     password:{
         type:String,
         required:true,
         trim:true,
+        validate:{
+            validator:validatePassword,
+            message:"Password must be at least 6 characters and contain a number"
+        }
     }
 },{timestamps:true});
 
-// 🔐 PRE HASHING MIDDLEWARE
-userSchema.pre("save", async function (next) {
-  // Only hash if password is modified
-  if (!this.isModified("password")) return next();
-
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-
-  next();
-});
 
 const userModel = mongoose.model('user', userSchema);
 
