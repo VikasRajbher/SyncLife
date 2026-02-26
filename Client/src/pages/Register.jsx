@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Lottie from "lottie-react";
 import sign from "../assets/sign.json";
-import axios from "axios";
+import { registerUser } from "../services/auth.service";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -26,12 +26,8 @@ export default function Register() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/auth/register`,
-        formData,
-      );
-
-      alert(res.data.message);
+      const data = await registerUser(formData); // 👈 use service
+      alert(data.message);
       navigate("/login");
     } catch (error) {
       alert(error.response?.data?.message || "Something went wrong");
